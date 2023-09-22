@@ -1,0 +1,13 @@
+main:: IO()
+ano:: Int -> Int
+ano a = a
+
+idade:: Int -> Int
+idade i = i
+
+main = do
+  putStrLn("Ano atual: ")
+  a<-readLn
+  putStrLn("Idade: ")
+  i<-readLn
+  putStrLn("Nasceu em " ++ show(ano a - idade i))

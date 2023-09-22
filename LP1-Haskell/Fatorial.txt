@@ -1,0 +1,10 @@
+main:: IO()
+fat:: Int -> Int
+fat 0 = 1
+fat n = n * fat(n-1)
+
+main = do
+  putStrLn("\nFatorial de ... ")
+  n<-readLn
+  
+  putStrLn("\nFatorial de "++show(n)++" = "++show(fat n))

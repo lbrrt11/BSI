@@ -1,0 +1,13 @@
+main :: IO ()
+main = do
+  putStrLn "Digite o primeiro valor"
+  valor1 <- readLn
+  putStrLn "Digite o segundo valor"
+  valor2 <- readLn
+  putStrLn "Digite o terceiro valor"
+  valor3 <- readLn
+  
+  let maior = maximum [valor1, valor2, valor3]
+  let menor = minimum [valor1, valor2, valor3]
+  let meio = (valor1 + valor2 + valor3) - maior - menor
+  putStrLn ("Valores em ordem decrescente: " ++show maior ++ ", " ++ show meio ++ ", " ++ show menor)

@@ -1,0 +1,11 @@
+main :: IO()
+main = do
+  putStrLn "Digite o primeiro valor booleano (True ou False): "
+  valor1 <- readLn
+  putStrLn "Digite o segundo valor booleano (True ou False): "
+  valor2 <- readLn
+  
+  if valor1 && valor2 then do
+    putStrLn "Ambos são verdadeiros"
+  else
+    putStrLn "Pelo menos um ou os dois valores são falsos"

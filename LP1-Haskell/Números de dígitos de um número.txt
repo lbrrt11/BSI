@@ -1,0 +1,10 @@
+main:: IO()
+numdig:: Float -> Float
+numdig n
+  |n>0 && n<10 = 1
+  |otherwise = 1 + numdig(n/10)
+
+main = do
+putStrLn ("Digite um numero")
+n<- readLn
+putStrLn("Numero de digitos = " ++ show(numdig n))

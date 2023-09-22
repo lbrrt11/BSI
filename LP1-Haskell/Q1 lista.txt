@@ -1,0 +1,17 @@
+main:: IO()
+maior:: Float -> Float -> Float -> String
+s:: Float -> Float -> Float
+maior a b c
+  |(a+b)>c = "a + b = " ++ show(s a b) ++"\nc = "++ show(c) ++"\neh maior que c"
+  |(a+b)<c = "a + b = " ++ show(s a b) ++"\nc = "++ show(c) ++"\neh menor que c"
+  |(a+b)==c = "a + b = " ++ show(s a b) ++"\nc = "++ show(c) ++"\neh igual a c"
+s a b = a+b
+
+main = do
+  putStrLn("\nValor (a)")
+  a<-readLn
+  putStrLn("\nValor (b)")
+  b<-readLn
+  putStrLn("\nValor (c)")
+  c<-readLn
+  putStrLn((maior a b c))

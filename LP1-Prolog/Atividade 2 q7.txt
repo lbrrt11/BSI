@@ -1,0 +1,19 @@
+aluno(joao, paradigmas).
+aluno(maria, paradigmas).
+aluno(joel, lab2).
+aluno(joel, estruturas).
+frequenta(joao, feup).
+frequenta(maria, feup).
+frequenta(joel, ist).
+professor(carlos, paradigmas).
+professor(ana_paula, estruturas).
+professor(pedro, lab2).
+funcionario(pedro, ist).
+funcionario(ana_paula, feup).
+funcionario(carlos, feup).
+
+professor_de(X, Y) :- professor(X, Z), aluno(Y, Z).
+frequenta_uni(X, Y) :- professor_de(Z,X), funcionario(Z,Y); funcionário(X, Y).
+
+colega_aluno(X, Y) :- aluno(X, Z), aluno(Y,Z),X \= Y.
+colega_prof(X, Y) :- funcionario(X, Z), funcionario(Y, Z), X \= Y.

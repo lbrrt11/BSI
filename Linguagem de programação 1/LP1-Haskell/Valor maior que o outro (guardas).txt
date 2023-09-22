@@ -1,0 +1,12 @@
+main:: IO()
+maior:: Float -> Float -> String
+maior n1 n2
+  | n1 > n2 = "Maior valor e " ++ show(n1)
+  | n2 > n1 = "Maior valor e " ++ show(n2)
+
+main = do
+  putStrLn("\nValor (1)")
+  n1<-readLn
+  putStrLn("\nValor (2)")
+  n2<-readLn
+  putStrLn(show(maior n1 n2))

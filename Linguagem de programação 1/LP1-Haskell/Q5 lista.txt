@@ -1,0 +1,10 @@
+main:: IO()
+vdout:: Float -> String
+vdout n
+  | n > 0 = "valor positivo: dobro = " ++ show(n*2)
+  | otherwise = "valor negativo: triplo = " ++ show(n*3)
+
+main = do
+  putStrLn("\nDigite um numero")
+  n<-readLn
+  putStrLn(show(vdout n))

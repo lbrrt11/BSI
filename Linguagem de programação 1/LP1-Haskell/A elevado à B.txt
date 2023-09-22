@@ -1,0 +1,13 @@
+main:: IO()
+pot:: Float -> Float -> Float
+pot a b
+  |b == 0 = 1
+  |b>0 = a*pot a (b-1)
+  |b<0 = 1/pot a (-b)
+
+main = do
+  putStrLn("\nDigite o numero da base")
+  a<-readLn
+  putStrLn("\nDigite o numero do expoente")
+  b<-readLn
+  putStrLn(show(a)++ " elevado a " ++show(b)++ " = " ++ show(pot a b))

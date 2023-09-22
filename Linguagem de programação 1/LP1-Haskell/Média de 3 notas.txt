@@ -1,0 +1,14 @@
+main:: IO()
+med:: Float -> Float -> Float-> String
+media:: Float -> Float -> Float -> Float
+media m1 m2 m3 = ((m1 + m2 + m3)/3)
+med m1 m2 m3 = if ((m1 + m2 + m3)/3) >= 7 then "Aprovado. Media = " else "Reprovado. Media = "
+
+main = do
+  putStrLn("\nValor (1)")
+  m1<-readLn
+  putStrLn("\nValor (2)")
+  m2<-readLn
+  putStrLn("\nValor (3)")
+  m3<-readLn
+  putStrLn(show(med m1 m2 m3) ++ show(media m1 m2 m3))

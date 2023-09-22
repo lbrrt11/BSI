@@ -1,0 +1,10 @@
+main:: IO()
+vdout:: Int -> String
+vdout n
+  | mod n 2 == 0 = show(n) ++ " eh par, entao soma 5, ficando = " ++ show(n+5)
+  | mod n 2 /= 0 = show(n) ++ " eh impar, entao soma 8, ficando = " ++ show(n+8)
+
+main = do
+  putStrLn("\nDigite um numero")
+  n<-readLn
+  putStrLn(show(vdout n))

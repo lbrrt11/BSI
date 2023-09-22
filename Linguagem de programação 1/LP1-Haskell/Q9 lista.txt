@@ -1,0 +1,12 @@
+main:: IO()
+pideal:: String -> Float -> Float
+pideal s h
+  |s == "m" = (72.7 * h) - 58
+  |s == "f" = (62.1 * h) - 44.7
+
+main = do
+  putStrLn("\nSexo (f ou m)")
+  s<-readLn
+  putStrLn("\nAltura")
+  h<-readLn
+  putStrLn("Peso ideal = "++show(pideal s h)) 

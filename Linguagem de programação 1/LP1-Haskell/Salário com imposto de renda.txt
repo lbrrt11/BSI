@@ -1,0 +1,13 @@
+main:: IO()
+
+des:: Double -> Double
+des sl = (sl*0.275)
+salario:: Double -> Double
+salario sl = (sl - (sl * 0.275))
+
+main = do
+  putStrLn("Informe seu salario = ")
+  sl<-readLn
+  
+  putStrLn("Salario bruto = " ++ show(sl)++ "\n\nDesconto = " ++ show(des sl) ++"\n\nSalario liquido = " ++ show(salario sl))
+/*salário com imposto de renda (27,5%)*/

@@ -1,0 +1,9 @@
+main:: IO()
+temp:: Float -> Float
+temp t = ((t * 1.8) + 32)
+
+main = do
+  putStrLn("Temperatura (em C) = ")
+  t<-readLn
+  
+  putStrLn(show(t) ++" graus celsius = " ++ show(temp t) ++ " fahrenheit")

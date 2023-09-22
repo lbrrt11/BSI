@@ -1,0 +1,20 @@
+main:: IO()
+status:: String -> String -> String -> String
+status a b c = "\nNome: " ++ a ++ "\nSexo: " ++ b ++ "\nEstado Civil: " ++ c
+
+status1:: String -> String -> String -> String -> String
+status1 a b c d = "\nNome: " ++ a ++ "\nSexo: " ++ b ++ "\nEstado Civil: " ++ c++ "\nTempo de casada (anos): " ++ d
+
+main = do
+  putStrLn("Nome: ")
+  a<- getLine
+  putStrLn("Sexo (M ou F): ")
+  b<- getLine
+  putStrLn("Estado civil (SOLTEIRO, CASADO, DIVORCIADO OU VIUVO): ")
+  c<- getLine
+  
+  if ((b == "F") && (c == "CASADO")) then do
+  putStrLn("Digite o tempo de casada (em anos):")
+  d<- getLine
+  putStrLn((status1 a b c d))
+  else putStrLn((status a b c))

@@ -1,0 +1,13 @@
+main:: IO()
+horas:: Double -> Double
+horas h = (h * 3600)
+
+minutos:: Double -> Double
+minutos m = (m * 60)
+
+main = do
+  putStrLn("Horas: ")
+  h<-readLn
+  putStrLn("Minutos: ")
+  m<-readLn
+  putStrLn("Valor em segundos = " ++ show(horas h + minutos m))

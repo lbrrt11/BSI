@@ -1,0 +1,33 @@
+main:: IO()
+circulo:: Float -> Float
+circulo r = ((r*r)*3.14)
+
+qua:: Float -> Float
+qua l = (l*l)
+
+trianguloret:: Float -> Float -> Float
+trianguloret x y = ((x * y)/2)
+
+ret:: Float -> Float -> Float
+ret b h = (b * h)
+
+main = do
+  putStrLn("raio do circulo: ")
+  r<-readLn
+  putStrLn("area do circulo = " ++ show(circulo r))
+
+  putStrLn("\n\nlado do quadrado: ")
+  l<-readLn
+  putStrLn("area do quadrado = " ++ show(qua l))
+
+  putStrLn("\n\nbase do triangulo retangulo")
+  putStrLn("altura do triangulo retangulo")
+  x<-readLn
+  y<-readLn
+  putStrLn("area do triangulo retangulo = " ++ show(trianguloret x y))
+
+  putStrLn("\n\nbase do retangulo")
+  putStrLn("altura do retangulo")
+  b<-readLn
+  h<-readLn
+  putStrLn("area do retangulo = " ++ show(ret b h))

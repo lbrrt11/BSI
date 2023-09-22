@@ -1,0 +1,37 @@
+main:: IO()
+soma:: Int -> Int -> Int
+soma a b = (a + b)
+
+sub:: Int -> Int -> Int
+sub c d = (c - d)
+
+multiplica:: Int -> Int -> Int
+multiplica e f = (e * f)
+
+divisao:: Double -> Double -> Double
+divisao g h = (g / h)
+
+main = do
+  putStrLn("Valor (a)")
+  putStrLn("Valor (b)")
+  a<-readLn
+  b<-readLn
+  putStrLn("soma = " ++ show(soma a b))
+
+  putStrLn("\n\nValor (c)")
+  putStrLn("Valor (d)")
+  c<-readLn
+  d<-readLn
+  putStrLn("sub = " ++ show(sub c d))
+
+  putStrLn("\n\nValor (e)")
+  putStrLn("Valor (f)")
+  e<-readLn
+  f<-readLn
+  putStrLn("multiplicacao = " ++ show(multiplica e f))
+
+  putStrLn("\n\nValor (g)")
+  putStrLn("Valor (h)")
+  g<-readLn
+  h<-readLn
+  putStrLn("divisao = " ++ show(divisao g h))

@@ -1,0 +1,12 @@
+main:: IO()
+soum:: Float -> Float -> String
+soum n1 n2
+  | n1 == n2 = "Valores iguais: soma = " ++ show(n1+n2)
+  | otherwise = "Valores diferentes: multiplicacao = " ++ show(n1*n2)
+
+main = do
+  putStrLn("\nValor (1)")
+  n1<-readLn
+  putStrLn("\nValor (2)")
+  n2<-readLn
+  putStrLn(show(soum n1 n2))

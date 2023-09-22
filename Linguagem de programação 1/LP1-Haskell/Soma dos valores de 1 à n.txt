@@ -1,0 +1,9 @@
+main:: IO()
+som:: Int -> Int
+som 1 = 1
+som n = n+som(n-1)
+
+main = do
+  putStrLn("\nDigite um numero para calculo do somatorio")
+  n<-readLn
+  putStrLn("\nSomatorio = "++show(som n)) 

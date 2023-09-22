@@ -1,0 +1,15 @@
+main:: IO()
+maior:: Float -> Float -> Float -> Float
+maior n1 n2 n3
+  |n1>n2 && n1>n3 = (n1)
+  |n2>n1 && n2>n3 = (n2)
+  |n3>n1 && n3>n2 = (n3)
+
+main = do
+  putStrLn("\nValor (1)")
+  n1<-readLn
+  putStrLn("\nValor (2)")
+  n2<-readLn
+  putStrLn("\nValor (3)")
+  n3<-readLn
+  putStrLn("Maior valor = "++show(maior n1 n2 n3))

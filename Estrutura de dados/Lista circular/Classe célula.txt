@@ -1,9 +1,8 @@
-package aluno2;
+package listacircular;
 import java.util.Arrays;
 public class Celula {
     private Celula proxima;
     private Celula anterior;
-    
     private Object elemento;
     
     public Celula (Celula proxima, Object elemento){

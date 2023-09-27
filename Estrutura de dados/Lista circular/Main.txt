@@ -102,37 +102,67 @@ public class Listacircular {
     
     // 4.6 - Intercalar 2 listas circulares
     public void intercalar(Listacircular L2){
-        // situação 1 - listas 1 e 2 vazias
-        if(this.total == 0 && L2.total == 0){}
-        
-        // situação 2 - lista 1 cheia e lista 2 vazia
-        else if(this.total == 0 && L2.total > 0){}
-        
-        // situação 3 - lista 1 vazia e lista 2 cheia
-        else if(this.total > 0 && L2.total == 0){
-            this.primeira = L2.primeira;
-            this.ultima = L2.ultima;
+        //01 - L1 vazia e L2 vazia
+        if(this.total == 0 && L2.total == 0)
+        {}
+        //02 - L1 cheia e L2 vazia
+        else if(this.total > 0 && L2.total == 0)
+        {}
+        //03 - L1 vazia e L2 cheia
+        if(this.total == 0 && L2.total > 0){
+            this.primeira         = L2.primeira;
+            this.ultima           = L2.ultima;
             this.total = L2.total;
         }
-        
-        // situação 4 - listas 1 e 2 cheias
+        //04 - L1 cheia e L2 cheia
         else if(this.total > 0 && L2.total > 0){
             
-            // pega a primeira de 11
-            // pega a primeira de l2
+            // pega a primeira de L1
+            // pega a primeira de L2
             
             // do while - enquanto não é a primeira
-            // -> adicionar l3 ao atual l1
-            // -> adicionar l3 ao atual l2
+            // -> adicionar L3 o atual L1
+            // -> adicionar L3 o atual L2
+            // -> pula para próxima de L1 e L2
             
-            //se existe elementos em l1
-            // add -> os elementos de l1 em l3
+            // Se existe elementos em L1
+            // -> add os elementos de L1 em L3
             
-            //se existe elementos em l2
-            // add -> os elementos de l2 em l3
-        
-            // copiar para o 11 o resultado de l3
-        }
+            // Copiar para L1 o resutado de L3
+            
+            Listacircular L3 = new Listacircular ();
+            
+            Celula atual1 = this.primeira;
+            Celula atual2 = L2.primeira;
+            
+            // Insere enquanto tem a mesma quantidade de elementos
+            do {
+                L3.add(atual1.getElemento()); // add L1
+                L3.add((atual2.getElemento())); // add L2
+                
+                atual1 = atual1.getProxima();
+                atual2 = atual2.getProxima();
+            } 
+            
+            while ((atual1 != this.primeira) && (atual2 != L2.primeira));
+
+           // L1 Ainda tem elementos
+            while (atual1 != this.primeira) {
+                L3.add(atual1.getElemento());
+                atual1 = atual1.getProxima();
+            }
+            
+           // L2 Ainda tem elementos
+            while (atual2 != L2.primeira) {
+                L3.add(atual2.getElemento());
+                atual2 = atual2.getProxima();
+            }
+            
+            // Copiar de L3 auxiliar para L1 onde deve estar a resposta
+            this.primeira = L3.primeira;
+            this.ultima = L3.ultima;
+            this.total = L3.total;  
+        }         
     }
     
     public void intercalar2(Listacircular L2){}

@@ -147,13 +147,15 @@ public class Listacircular {
             while ((atual1 != this.primeira) && (atual2 != L2.primeira));
 
            // L1 Ainda tem elementos
-            while (atual1 != this.primeira) {
+            while (atual1 != this.primeira)
+            {
                 L3.add(atual1.getElemento());
                 atual1 = atual1.getProxima();
             }
             
            // L2 Ainda tem elementos
-            while (atual2 != L2.primeira) {
+            while (atual2 != L2.primeira)
+            {
                 L3.add(atual2.getElemento());
                 atual2 = atual2.getProxima();
             }

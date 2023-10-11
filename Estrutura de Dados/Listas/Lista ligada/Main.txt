@@ -1,0 +1,228 @@
+package aluno2;
+public class listaligada {
+    private Celula primeira;
+    private Celula ultima;
+    private int total = 0;
+
+    public void addfinal(Object elemento) {
+        if (this.total == 0) {
+            this.addcomeco(elemento);
+        } else {
+            Celula nova = new Celula(elemento);
+            this.ultima.setProxima(nova);
+            nova.setAnterior(this.ultima);
+            this.ultima = nova;
+            this.total++;
+        }
+    }
+
+    public void adiciona(int posicao, Object elemento) {
+        if (posicao == 0) { // no comeco
+            this.addcomeco(elemento);
+        } 
+        
+        else if (posicao == this.total) { // no fim
+            this.addfinal(elemento);
+        }
+        
+        else {
+            Celula anterior = this.pegaCelula(posicao - 1);
+            Celula proxima = anterior.getProxima();
+            Celula nova = new Celula(anterior.getProxima(), elemento);
+            nova.setAnterior(anterior);
+            anterior.setProxima(nova);
+            proxima.setAnterior(nova);
+            this.total++;
+        }
+    }
+
+    public Object pega(int posicao) {
+        return this.pegaCelula(posicao).getElemento();
+    }
+
+    public void remove(int posicao) {
+        if (!this.posicaoOcupada(posicao)) {
+            throw new IllegalArgumentException ("Posição não existe");
+        }
+        
+        if (posicao == 0) {
+            this.removeDoComeco();
+        }
+        
+        else if (posicao == this.total - 1) {
+            this.removeDoFim();
+        }
+        
+        else {
+            Celula anterior = this.pegaCelula(posicao - 1);
+            Celula atual = anterior.getProxima();
+            Celula proxima = atual.getProxima();
+            
+            anterior.setProxima(proxima);
+            proxima.setAnterior(anterior);
+            this.total --;
+        }
+    }
+
+    public int tamanho() {
+        return this.total;
+    }
+
+    public boolean contem(Object elemento) {
+        Celula atual = this.primeira;
+        
+        while (atual != null) {
+            if (atual.getElemento().equals(elemento)){
+                return true;
+            }
+            atual = atual.getProxima();
+        }
+        return false;
+    }
+
+    public void addcomeco(Object elemento) {
+        if (this.total == 0) {
+            
+            // caso especial da lista vazia
+            Celula nova = new Celula(elemento);
+            this.ultima = nova;
+            this.primeira = nova;
+        } 
+        else {    
+            Celula nova = new Celula(this.primeira, elemento);
+            this.primeira.setAnterior(nova);
+            this.primeira = nova;
+        }
+        
+        this.total ++;
+
+    }
+
+    public void removeDoComeco() {
+        if (!this.posicaoOcupada(0)) {
+            throw new IllegalArgumentException("Posição não existe.");
+        }        
+        this.primeira = this.primeira.getProxima();
+        
+        if(primeira != null)
+            this.primeira.setAnterior(null);
+        
+        this.total --;
+
+        if (this.total == 0) { // lista ficou vazia
+            this.ultima = null;
+        }
+        
+        System.gc(); 
+    }
+
+    public void removeDoFim() {
+        if (!this.posicaoOcupada(this.total - 1)){
+            throw new IllegalArgumentException ("Posição não existe");
+        }
+        if (this.total == 1){
+            this.removeDoComeco();
+        }
+        else {
+            Celula penultima = this.ultima.getAnterior();
+            penultima.setProxima(null);
+            this.ultima = penultima;
+            this.total --;
+        }
+    }
+
+    private boolean posicaoOcupada(int posicao) {
+        return posicao >= 0 && posicao < this.total;
+
+    }
+
+    private Celula pegaCelula(int posicao) {
+        if (!this.posicaoOcupada(posicao)) {
+            throw new IllegalArgumentException("Posição não encontrada");
+        }
+
+        Celula atual = primeira;
+        for (int i = 0; i < posicao; i++) {
+            atual = atual.getProxima();
+        }
+        return atual;
+    }
+
+    public String toString() {
+        // verificando se a lista está vazia
+        if (this.total == 0) {
+            return "[]";
+        }
+
+        StringBuilder builder = new StringBuilder("[");
+        Celula atual = primeira;
+
+        // percorrendo até o penúltimo elemento.
+        for (int i = 0; i < this.total - 1; i++) {
+            builder.append(atual.getElemento());
+            builder.append(", ");
+            atual = atual.getProxima();
+        }
+
+        // último elemento
+        builder.append(atual.getElemento());
+        builder.append("]");
+
+        return builder.toString();
+    }
+
+    public String toString2() {
+        String retorno = "[";
+        Celula atual = primeira;
+
+        while (atual != null) {
+            retorno += atual.getElemento(); // pega elemento
+
+            if (atual.getProxima() != null) // se não for o último, adiciona ", "
+                retorno += ", "; 
+            
+            atual = atual.getProxima(); // pula pro próximo
+        }
+        retorno += "]";
+        return retorno;
+    }
+    
+    public static void main(String[] args) {
+        Aluno a1 = new Aluno("Alberto");
+        Aluno a2 = new Aluno("Bruno");
+        Aluno a3 = new Aluno("Carlos");
+        Aluno a4 = new Aluno("Douglas");
+        Aluno a5 = new Aluno("Eliana");
+        Aluno a6 = new Aluno("Fernanda");
+        Aluno a7 = new Aluno("Gabriel");
+
+        listaligada lista = new listaligada();
+        lista.adiciona(0, a1);
+        lista.adiciona(1, a2);
+        lista.adiciona(2, a3);
+        System.out.println(lista);
+        
+        lista.addcomeco(a4);
+        System.out.println(lista.toString2());
+
+        lista.addfinal(a5);
+        System.out.println(lista.toString2());
+        
+        lista.remove(0);
+        System.out.println(lista.toString2());
+        
+        lista.adiciona(3, a7);
+        System.out.println(lista.toString2());
+        
+        lista.removeDoFim();
+        System.out.println(lista.toString2());
+        
+        /*Aluno teste = new Aluno("Sergio");
+        if(lista.contem(teste))
+            System.out.println("contém o aluno: " + teste);
+        else { System.out.println("Não contém o aluno: " + teste);}
+        
+        if(lista.contem(new Aluno ("Douglas")))
+            System.out.println("contém o aluno: ");*/
+    }
+}

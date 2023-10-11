@@ -1,0 +1,64 @@
+package aluno;
+import java.util.Arrays;
+public class Object {
+    private String nome;
+    private int id;
+    private float nota;
+    private String turma;
+    
+    // passando nome
+    public Object(String nome) {
+        this.nome = nome;
+    }
+    
+    // passando o resto dos dados
+    public Object(String nome, int id, float nota, String turma) {
+        this.nome = nome;
+        this.id = id;
+        this.nota = nota;
+        this.turma = turma;
+    }
+    
+    public String toString(){
+        return this.getNome();
+    }
+    
+    // realiza a comparação (no caso, por nome)
+    // .equals para comparar string, "==" para int, double, etc
+    // .equals compara o conteúdo, "==" compara o endereço de memória
+    public boolean equals(Object outro){
+        return this.nome.equals(outro.getNome());
+    }
+    
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public double getNota() {
+        return nota;
+    }
+
+    public void setNota(float nota) {
+        this.nota = nota;
+    }
+
+    public String getTurma() {
+        return turma;
+    }
+
+    public void setTurma(String turma) {
+        this.turma = turma;
+    }
+}

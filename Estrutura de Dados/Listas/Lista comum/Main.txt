@@ -1,0 +1,229 @@
+package aluno;
+import java.util.ArrayList;
+import java.util.Arrays;
+public class Lista {
+    // this = referenciar a variável da classe
+        private Object[] objetos = new Object [100];
+        
+        private int total = 0;
+        
+        private void garantaespaco() {
+            if (this.total == this.objetos.length) {
+                Object [] novaarray = new Object [this.objetos.length * 2];
+                    for (int i = 0; i < this.objetos.length; i ++){
+                        novaarray [i] = this.objetos [i];
+                    }
+                    this.objetos = novaarray;
+            }
+        }
+        
+        public void add (Object obj){
+            /* não compactado
+            for (int i = 0; i < this.alunos.length; i ++){
+                if (this.alunos[i] == null){
+                this.alunos[i] = aluno;
+                } }*/
+            
+            // compactado à esquerda
+            garantaespaco();
+            objetos[total] = obj;
+            total ++;
+        }
+        
+        public void add (int posicao, Object objeto){
+            garantaespaco();
+            if(!this.posicaovalida(posicao)){
+                throw new IllegalArgumentException("posição inválida");
+            }
+            
+            for (int i = this.total-1; i >= posicao; i--){
+                this.objetos[i + 1] = this.objetos [i];
+            }
+            this.objetos[posicao] = objeto;
+            this.total ++;
+        }
+        
+        public String toString() {
+            if (this.total == 0) {
+                return "[]";
+            }
+
+            StringBuilder builder = new StringBuilder();
+            builder.append("[");
+
+            for (int i = 0; i < this.total - 1; i++) {
+                builder.append(this.objetos[i]);
+                builder.append(", ");
+
+            }
+
+            builder.append(this.objetos[this.total - 1]);
+            builder.append("]");
+
+            return builder.toString();
+            }
+        
+        public String toString2(){
+            if (total == 0){
+                return "[";
+            }
+            
+            String retorno;
+            retorno = "[";
+            
+            for (int i = 0; i < total - 1; i ++){
+                retorno += objetos[i] + ", ";
+            }
+            
+            retorno += objetos[total - 1] + "]";
+            
+            return retorno;
+        }
+        
+        private boolean posicaovalida(int posicao){
+            return (posicao >= 0) && (posicao <= this.total);
+        }
+                
+        public Object pega (int posicao){
+            if (!this.posicaoocupada(posicao)){
+                //throw new IllegalArgumentException("posição inválida");
+                return null;
+            }
+            return this.objetos[posicao];
+        }
+        
+        private boolean posicaoocupada(int posicao){
+            return (posicao >= 0) && (posicao < this.total);
+        }
+        
+        public void remove (int posicao){
+            if(!this.posicaoocupada(posicao)){
+                throw new IllegalArgumentException("posição inválida");
+            }
+            for (int i = posicao; i < this.total - 1; i++){
+                this.objetos[i] = this.objetos [i+1];
+            }
+            this.total --;
+        }
+        
+        public boolean contem (Object objeto){
+            for(int i = 0; i < total; i++)
+            {
+                if(objeto.equals(objetos[i]))
+                return true;
+            }   
+            return false;
+        }
+        
+        public int tamanho(){
+            return this.total;
+        }
+        
+        // Q7 - remover todos os objs iguais encontrados
+        public void removeobj (Object obj){
+            int i = 0;
+            while (i < total){
+                    if (obj.equals(objetos [i])){
+                    remove(i);
+            }
+                    else
+                        i++;
+            }
+        }
+        
+        // Q8 - limpar a lista
+        public void clear(){
+            /*int i= 0;
+                while (i < total){
+                    remove (i);
+                }*/
+            total = 0;
+        }
+        
+        // contador de ocorrência do objeto
+        public int quantocorrencia(Object obj){
+            int quant = 0;
+            
+            for (int i = 0; i < total; i++){
+                
+                if (obj.equals(objetos [i])){
+                    
+                    quant ++;
+                    break;
+                }
+            }
+            return quant;
+        }
+
+        // Q11 - encontrar uma ocorrência específica
+        public int indexOf(Object obj, int ocorrencia){
+            int posRetorno = -1;
+            int quant = 0;
+            
+            for (int i = 0; i < total; i++){
+                
+                if (obj.equals(objetos [i])){
+                    
+                    quant ++; // conta a quantidade de ocorrências do objeto
+                        if (quant == ocorrencia) // verifica se chegou na ocorrência desejada
+                            posRetorno = i; // pega a posição do objeto na ocorrência desejada
+                            break;
+                }
+            }
+            
+            if (posRetorno == -1) {
+                throw new IllegalArgumentException(" Posição não encontrada");
+            }
+            else 
+                return posRetorno;
+        }
+        
+        public static void main(String[] args) {
+        Object a1 = new Object("Rafael");
+        Object a2 = new Object("Laura");
+        Object a3 = new Object("Tarcisio");
+        Object a4 = new Object("Felipe");
+        
+        // ---------------------- Nosso Vetor genérico ----------------------
+
+        Lista lista = new Lista();
+        
+        lista.add(a1);                // Aceita add Class Aluno
+        lista.add(a2);
+        //lista.add("Teste de String"); // Aceita add Class String
+        Double d = 0.0;
+        //lista.add(d);                 // Aceita add Class Double etc
+        
+        System.out.println(lista);
+        System.out.println(lista.tamanho());        
+        
+        
+        // ArrayList Java Genérico
+        ArrayList listaJava = new ArrayList();
+           
+        listaJava.add(a1);                 // Aceita add Class Aluno
+        listaJava.add(a2);
+        listaJava.add(a3);
+        listaJava.add(0,a4);
+        listaJava.add("Teste de String");  // Aceita add Class String
+        Double d1 = 10.0;
+        listaJava.add(d1);                 // Aceita add Class Double ETC.
+        
+        listaJava.remove(2);
+        System.out.println(listaJava);
+        System.out.println(listaJava.size());
+        
+               
+        // ArrayList Java com Tipo (Object)
+        ArrayList<Object> listaAluno = new ArrayList<Object>();
+        
+        lista.add(a2);              // Só add elementos do tipo "Aluno"
+        lista.add(a3);
+        lista.add(0,a4);
+        
+        Object pegado = listaAluno.get(0);
+        
+        System.out.println(listaAluno);
+        System.out.println(listaAluno.size());
+        
+        System.out.println(pegado);

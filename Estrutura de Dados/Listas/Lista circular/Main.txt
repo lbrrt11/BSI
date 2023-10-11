@@ -1,0 +1,227 @@
+package listacircular;
+import java.util.Arrays;
+public class Listacircular {
+    private Celula primeira;
+    private Celula ultima;
+    private int total = 0;
+    
+    // 4.2 - Contar nº de elementos
+    public int tamanho() {
+        return this.total;
+    }
+    
+    public Listacircular() {
+        primeira = null;
+        ultima = null;
+        total = 0;
+    }
+    
+    // 4.3 - Adiciona no final
+    public void add(Object elemento){
+        Celula nova = new Celula (elemento);
+        
+        // situação 1 - lista vazia
+        if (this.total == 0) 
+        {
+            this.primeira = nova;
+            this.ultima = nova;
+            
+            nova.setProxima(nova);
+            nova.setAnterior(nova);
+        }
+        
+        // situação 2 - lista com elementos
+        else
+        {
+            nova.setProxima(primeira);
+            primeira.setAnterior(nova);
+            ultima.setProxima(nova);
+            nova.setAnterior(ultima);
+            
+            ultima = nova;
+        }
+            total ++;
+    }
+    
+    // 4.4 - Remover do final
+    public void remove(){
+        // Situação 1 - lista vazia
+        if (this.total == 0)
+        {
+            throw new IllegalArgumentException("Não tem o que remover");
+        }
+        
+        // situação 2 - lista com apenas 1 elemento
+        if (this.total == 1)
+        {
+            primeira.setAnterior(null);
+            primeira.setProxima(null);
+            primeira = null;
+            ultima = null;
+        }
+        
+        // situação 3 - lista com mais de 1 elemento
+        else
+        {
+            Celula penultima = ultima.getAnterior();
+            
+            penultima.setProxima(primeira);
+            primeira.setAnterior(penultima);
+            ultima = penultima;
+        }
+            total --;
+    }
+    
+    // 4.5 - Concatenar 2 listas circulares
+    public void concatenar(Listacircular L2){
+        // situação 1 - listas 1 e 2 vazias
+        if(this.total == 0 && L2.total == 0){}
+        
+        // situação 2 - lista 1 cheia e lista 2 vazia
+        else if(this.total == 0 && L2.total > 0){}
+        
+        // situação 3 - lista 1 vazia e lista 2 cheia
+        else if(this.total > 0 && L2.total == 0){
+            this.primeira = L2.primeira;
+            this.ultima = L2.ultima;
+            this.total = L2.total;
+        }
+        
+        // situação 4 - listas 1 e 2 cheias
+        else if(this.total > 0 && L2.total > 0){
+            this.ultima.setProxima(L2.primeira);
+            L2.primeira.setAnterior(this.ultima);
+            
+            L2.ultima.setProxima(this.primeira);
+            this.primeira.setAnterior(L2.ultima);
+            
+            this.ultima = L2.ultima;
+            this.total += L2.total;
+        }
+    }
+    
+    // 4.6 - Intercalar 2 listas circulares
+    public void intercalar(Listacircular L2){
+        //01 - L1 vazia e L2 vazia
+        if(this.total == 0 && L2.total == 0)
+        {}
+        //02 - L1 cheia e L2 vazia
+        else if(this.total > 0 && L2.total == 0)
+        {}
+        //03 - L1 vazia e L2 cheia
+        if(this.total == 0 && L2.total > 0){
+            this.primeira         = L2.primeira;
+            this.ultima           = L2.ultima;
+            this.total = L2.total;
+        }
+        //04 - L1 cheia e L2 cheia
+        else if(this.total > 0 && L2.total > 0){
+            
+            // pega a primeira de L1
+            // pega a primeira de L2
+            
+            // do while - enquanto não é a primeira
+            // -> adicionar L3 o atual L1
+            // -> adicionar L3 o atual L2
+            // -> pula para próxima de L1 e L2
+            
+            // Se existe elementos em L1
+            // -> add os elementos de L1 em L3
+            
+            // Copiar para L1 o resutado de L3
+            
+            Listacircular L3 = new Listacircular ();
+            
+            Celula atual1 = this.primeira;
+            Celula atual2 = L2.primeira;
+            
+            // Insere enquanto tem a mesma quantidade de elementos
+            do {
+                L3.add(atual1.getElemento()); // add L1
+                L3.add((atual2.getElemento())); // add L2
+                
+                atual1 = atual1.getProxima();
+                atual2 = atual2.getProxima();
+            } 
+            
+            while ((atual1 != this.primeira) && (atual2 != L2.primeira));
+
+           // L1 Ainda tem elementos
+            while (atual1 != this.primeira)
+            {
+                L3.add(atual1.getElemento());
+                atual1 = atual1.getProxima();
+            }
+            
+           // L2 Ainda tem elementos
+            while (atual2 != L2.primeira)
+            {
+                L3.add(atual2.getElemento());
+                atual2 = atual2.getProxima();
+            }
+            
+            // Copiar de L3 auxiliar para L1 onde deve estar a resposta
+            this.primeira = L3.primeira;
+            this.ultima = L3.ultima;
+            this.total = L3.total;  
+        }         
+    }
+    
+    public void intercalar2(Listacircular L2){}
+    // intercalar sem usar l3
+    
+    
+    // 4.7 - Imprimir lista no padrão
+     public String toString() {
+        // verificando se a lista está vazia
+        if (this.total == 0)
+        {
+            return "[]";
+        }
+        
+        StringBuilder builder = new StringBuilder("[");
+        Celula atual = primeira;
+        
+        // percorrendo até o penúltimo elemento.
+        for (int i = 0; i < this.total - 1; i++)
+        {
+            builder.append(atual.getElemento());
+            builder.append(", ");
+            atual = atual.getProxima();
+        }
+        
+        // último elemento
+        builder.append(atual.getElemento());
+        builder.append("]");
+
+        return builder.toString();
+    }
+    
+    // 4.8 - Testar métodos
+    public static void main(String[] args) {
+        Aluno a1 = new Aluno("Alvaro");
+        Aluno a2 = new Aluno("Bruno");
+        Aluno a3 = new Aluno("Carlos");
+
+        Listacircular l1 = new Listacircular();
+        
+        l1.add(a1);
+        l1.add(a2);
+        l1.add(a3);
+        System.out.println(l1);
+        
+        Aluno b1 = new Aluno("Rafael");
+        Aluno b2 = new Aluno("Laura");
+        Aluno b3 = new Aluno("Claudio");
+        
+        Listacircular l2 = new Listacircular();
+        l2.add(b1);
+        l2.add(b2);
+        l2.add(b3);
+        System.out.println(l2);
+        
+        l2.concatenar(l1);
+        System.out.println(l2);
+        System.out.println(l2.tamanho());
+    }
+}

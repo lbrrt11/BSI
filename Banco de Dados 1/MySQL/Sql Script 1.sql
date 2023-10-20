@@ -16,7 +16,7 @@ refMedicamento varchar (45),
 
 primary key (Nome_Cientifico),
 foreign key (refMedicamento) references medicamento (NomeVenda)
-);*/
+);
 
 
 create table paciente1(
@@ -24,7 +24,7 @@ idPaciente int auto_increment,
 nome varchar(45),
 
 primary key (idPaciente)
-);
+);*/
 
 
 create table trata4(

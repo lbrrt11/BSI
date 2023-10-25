@@ -25,30 +25,4 @@ public class Pilha<Tipo> {
     public int tamanho() {
         return this.objetos.size();
     }
-    /*
-    public static void main(String[] args) {
-        Peca p1 = new Peca("Parafuso");
-        Peca p2 = new Peca("Proteção");
-        Peca p3 = new Peca("LCD");
-        Peca p4 = new Peca("Flex");
-        Peca p5 = new Peca("Botão home");
-
-        Pilha<Peca> pilha = new Pilha<Peca>();
-        pilha.insere(p1);
-        pilha.insere(p2);
-        pilha.insere(p3);
-        pilha.insere(p4);
-        pilha.insere(p5);
-        System.out.println(pilha);
-
-        Peca x = pilha.remove();
-        System.out.println(pilha);
-
-        Pilha<String> p = new Pilha<String>();
-        p.insere("String 1");
-        p.insere("String 2");
-        System.out.println(p);
-        System.out.println(p.tamanho());
-    }
-    */
 }

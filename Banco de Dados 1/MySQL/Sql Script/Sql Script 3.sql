@@ -1,7 +1,7 @@
 -- create database Empresa;
 use Empresa;
 
-/*create table Empregado(
+create table Empregado(
 pnome VarChar(45),
 minicial VarChar(45),
 unome Varchar(45),
@@ -25,7 +25,7 @@ gerdatainicio date,
 
 primary key (dnumero),
 foreign key (gerssn) references Empregado (ssn)
-);*/
+);
 
 create table Depto_localizacoes3(
 dnumro int,
@@ -35,7 +35,7 @@ primary key (dnumro, dlocalizacao),
 foreign key (dnumro) references Departamento (dnumero)
 );
 
-/*create table Projeto(
+create table Projeto(
 pjnome VarChar(45),
 pnumero int auto_increment,
 plocalizacao varchar(45),
@@ -64,4 +64,4 @@ parentesco varchar(45),
 
 primary key (essn, nome_dependente),
 foreign key (essn) references Empregado (ssn)
-);*/
+);

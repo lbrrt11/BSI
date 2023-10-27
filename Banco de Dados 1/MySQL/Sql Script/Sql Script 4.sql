@@ -26,7 +26,7 @@ primary key (dia, hora, sala_num_predio, sala_num_sala),
 foreign key (sala_num_predio, sala_num_sala) references Sala (num_predio, num_sala)
 );
 
-create table Presença(
+create table Presenca(
 aluno_no_cartao int,
 aula_dia date,
 aula_hora time,

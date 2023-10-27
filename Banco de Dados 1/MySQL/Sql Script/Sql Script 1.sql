@@ -1,7 +1,7 @@
--- create database Hospital;
+create database Hospital;
 use Hospital;
 
-/*create table medicamento(
+create table medicamento(
 NomeVenda varchar(45),
 principioAtivo varchar(45),
 
@@ -24,7 +24,7 @@ idPaciente int auto_increment,
 nome varchar(45),
 
 primary key (idPaciente)
-);*/
+);
 
 
 create table trata4(

@@ -1,14 +1,14 @@
 create database Teste;
 use Teste;
 
-create table Aluno(
+create table if not exists Aluno(
 no_cartao int,
 nome VarChar(45),
 
 primary key (no_cartao)
 );
 
-create table Sala(
+create table if not exists Sala(
 num_predio int auto_increment,
 num_sala int,
 capacidade int,
@@ -16,7 +16,7 @@ capacidade int,
 primary key (num_predio, num_sala)
 );
 
-create table Aula(
+create table if not exists Aula(
 dia date,
 hora time,
 sala_num_predio int,
@@ -26,7 +26,7 @@ primary key (dia, hora, sala_num_predio, sala_num_sala),
 foreign key (sala_num_predio, sala_num_sala) references Sala (num_predio, num_sala)
 );
 
-create table Presenca(
+create table if not exists Presenca(
 aluno_no_cartao int,
 aula_dia date,
 aula_hora time,

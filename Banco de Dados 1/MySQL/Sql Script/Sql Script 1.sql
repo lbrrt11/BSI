@@ -19,7 +19,7 @@ foreign key (refMedicamento) references medicamento (NomeVenda)
 );
 
 
-create table paciente1(
+create table paciente(
 idPaciente int auto_increment,
 nome varchar(45),
 
@@ -27,14 +27,13 @@ primary key (idPaciente)
 );
 
 
-create table trata4(
+create table trata(
 refMedicamento varchar(45),
 refVirus varchar(45),
 refPaciente int,
 
 primary key (refMedicamento, refVirus, refPaciente),
-
 foreign key (refMedicamento) references medicamento (NomeVenda),
 foreign key (refVirus) references virus (Nome_Cientifico),
-foreign key (refPaciente) references paciente1 (idPaciente)
+foreign key (refPaciente) references paciente (idPaciente)
 )

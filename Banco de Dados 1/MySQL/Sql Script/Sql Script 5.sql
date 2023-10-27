@@ -1,5 +1,5 @@
-create database Faculdade1;
-use Faculdade1;
+create database Faculdade;
+use Faculdade;
 
 create table Aluno(
 matricula int,

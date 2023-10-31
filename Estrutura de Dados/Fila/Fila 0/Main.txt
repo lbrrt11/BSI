@@ -1,32 +1,63 @@
-package Fila;
+package fila;
 import java.util.LinkedList;
 import java.util.List;
+
 public class Fila<Tipo> {
-    
-    private List<Tipo> objetos = new LinkedList<Tipo>();
-    
-    public void insere(Tipo obj){
+
+    private LinkedList<Tipo> objetos = new LinkedList<Tipo>();
+
+    public void insere(Tipo obj) {
         this.objetos.add(obj);
     }
-    
-    public Tipo remove(){
-        return this.objetos.remove(0);
+
+    public Tipo remove() {
+        if(! vazia())
+            return this.objetos.remove(0);
+        else
+            return null; 
     }
-    
-    public boolean vazia(){
+
+    public boolean vazia() {
         return this.objetos.size() == 0;
     }
     
-    public String toString(){
+    public String toString() {
         return objetos.toString();
     }
     
-    public int tamanho(){
+     public int tamanho() {
         return objetos.size();
     }
     
-    public static void main(String[] args){
-        
+    public Tipo espia() {
+        if(! vazia())
+            return objetos.get(0);
+        else
+            return null;    
     }
     
+    public int verificaElemento(Tipo elemento){
+          return objetos.indexOf(elemento); 
+    }   
+    
+    public static void main(String[] args) {
+        Aluno a1 = new Aluno("Bruno", 18);
+        Aluno a2 = new Aluno("Rafael", 20);
+        Aluno a3 = new Aluno("Lucas", 17);
+        
+        Fila<Aluno> fila = new Fila<Aluno>();
+      
+        fila.insere(a1);
+        fila.insere(a2);
+        fila.insere(a3);
+        System.out.println(fila);
+
+        System.out.println("Espia: "+fila.espia());
+        System.out.println(fila);
+        System.out.println("Tamanho: "+fila.tamanho());
+        
+        fila.remove();
+        System.out.println(fila);
+        System.out.println("Tamanho: "+fila.tamanho());
+    }
 }

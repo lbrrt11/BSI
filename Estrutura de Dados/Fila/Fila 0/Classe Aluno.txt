@@ -15,8 +15,8 @@ public class Aluno {
         this.turma = turma;
     }
     
-    public String toString(){
-        return this.getNome();
+    public String toString() {
+        return this.getNome()+"-"+this.getIdade();
     }
     
     public boolean equals(Object outro){

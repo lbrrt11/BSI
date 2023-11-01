@@ -41,23 +41,33 @@ public class Fila<Tipo> {
     }   
     
     public static void main(String[] args) {
-        Aluno a1 = new Aluno("Bruno", 18);
-        Aluno a2 = new Aluno("Rafael", 20);
-        Aluno a3 = new Aluno("Lucas", 17);
+
+        // teste
+        String a1 = new String ("Bruno");
+        String a2 = new String ("Rafael");
+        String a3 = new String ("Leonardo");
         
-        Fila<Aluno> fila = new Fila<Aluno>();
-      
+        Fila<String> fila = new Fila<String>();
+
+        // inserção de elementos
         fila.insere(a1);
         fila.insere(a2);
         fila.insere(a3);
-        System.out.println(fila);
 
-        System.out.println("Espia: "+fila.espia());
-        System.out.println(fila);
-        System.out.println("Tamanho: "+fila.tamanho());
-        
-        fila.remove();
-        System.out.println(fila);
-        System.out.println("Tamanho: "+fila.tamanho());
+        // retorna a fila
+        System.out.println("Fila: " + fila);
+
+        // função espia
+        System.out.println("Espia: " + fila.espia());
+
+        // remoção de elementos
+        System.out.println("Removido: " + fila.remove());
+        System.out.println("Removido: " + fila.remove());
+
+        // função vazia
+        System.out.println("Fila está vazia? " + fila.vazia());
+
+        // verifica o tamanho da fila
+        System.out.println("Tamanho da fila: " + fila.tamanho());
     }
 }

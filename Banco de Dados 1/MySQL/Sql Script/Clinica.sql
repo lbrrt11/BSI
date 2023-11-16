@@ -20,6 +20,8 @@ create table Ambulatorio(
  
  primary key (cdMed),
  foreign key (cdAmb) references Ambulatorio (cdAmb)
+ on delete cascade
+ on update cascade
  );
 
 create table Paciente(
@@ -45,6 +47,8 @@ cdAmb int,
 
 primary key(cdFunc),
 foreign key(cdAmb) references Ambulatorio(cdAmb)
+on delete cascade
+on update cascade
 );
 
 create table Consulta(
@@ -60,6 +64,8 @@ primary key(cdCons),
 foreign key (cdMed) references Medico(cdMed),
 foreign key (cdPac) references Paciente(cdPac),
 foreign key (cdFunc_Marcacao) references Funcionario(cdFUnc)
+on delete cascade
+on update cascade
 );
 
 insert into Ambulatorio(cdAmb, andar, capacidade) values (1, 1, 30);

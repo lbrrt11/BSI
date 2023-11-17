@@ -28,7 +28,7 @@ primary key (depnumero)
 
 create table Pre_requisito(
 disciplina_dnumero int unique,
-dnumero_pre date unique,
+dnumero_pre int unique,
 
 primary key (dnumero_pre, disciplina_dnumero),
 foreign key (disciplina_dnumero) references Disciplina (dnumero)

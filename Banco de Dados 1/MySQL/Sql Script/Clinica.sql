@@ -13,7 +13,7 @@ create table Ambulatorio(
  cdMed int auto_increment,
  nome varchar(40) not null,
  idade smallint not null,
- especialidade char(20), 
+ especialidade char(45), 
  CPF numeric(11) unique not null,
  cidade varchar(30),
  cdAmb int,
@@ -47,8 +47,6 @@ cdAmb int,
 
 primary key(cdFunc),
 foreign key(cdAmb) references Ambulatorio(cdAmb)
-on delete cascade
-on update cascade
 );
 
 create table Consulta(
@@ -83,13 +81,13 @@ insert into Medico(cdMed, nome, idade, especialidade, CPF, cidade, cdAmb) values
 insert into Paciente(cdPac, nome, idade, cidade, CPF, doenca) values (1, 'Ana', 20, 'Itapetinga', 20000200000, 'Gripe');
 insert into Paciente(cdPac, nome, idade, cidade, CPF, doenca) values (2, 'Paulo', 24, 'Conquista', 20000220000, 'Fratura');
 insert into Paciente(cdPac, nome, idade, cidade, CPF, doenca) values (3, 'Lucia', 30, 'Itapetinga', 22000200000, 'Fratura');
-insert into Paciente(cdPac, nome, idade, cidade, CPF, doenca) values (4, 'Carlos', 28, 'Itapetinga', 11000110000, 'Sarampo');
+insert into Paciente(cdPac, nome, idade, cidade, CPF, doenca) values (4, 'Kauã', 28, 'Itambé', 11000110000, 'Sarampo');
 
 insert into Funcionario(cdfunc, nome, idade, cidade, salario, CPF) values (1, 'Rita', 32, 'Itapetinga', 1200, 20000100000);
-insert into Funcionario(cdfunc, nome, idade, cidade, salario, CPF) values (2, 'Maria', 55, 'Conquista', 1220, 30000110000);
+insert into Funcionario(cdfunc, nome, idade, cidade, salario, CPF) values (2, 'Mariana', 55, 'Conquista', 1220, 30000110000);
 insert into Funcionario(cdfunc, nome, idade, cidade, salario, CPF) values (3, 'Caio', 45, 'Salvador', 2000, 41000100000);
-insert into Funcionario(cdfunc, nome, idade, cidade, salario, CPF) values (4, 'Carlos', 44, 'Conquista', 1200, 51000110000);
-insert into Funcionario(cdfunc, nome, idade, cidade, salario, CPF) values (5, 'Paula', 33, 'Salvador', 2500, 61000111000);
+insert into Funcionario(cdfunc, nome, idade, cidade, salario, CPF) values (4, 'Luis', 44, 'Conquista', 1200, 51000110000);
+insert into Funcionario(cdfunc, nome, idade, cidade, salario, CPF) values (5, 'Fabiana', 33, 'Salvador', 2500, 61000111000);
 
 insert into Consulta(cdCons, cdMed, cdPac, cdFunc_Marcacao, data, hora, obs) values (1, 1, 1, 1, 12/06/2023, '19:20', 'AGENDADO');
 insert into Consulta(cdCons, cdMed, cdPac, cdFunc_Marcacao, data, hora, obs) values (2, 1, 4, 1, 13/06/2023, '13:20', 'AGENDADO');

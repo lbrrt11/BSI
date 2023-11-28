@@ -53,8 +53,6 @@ public class Main {
         
         System.out.println("\n\nEm-ordem - Alunos");
         System.out.println(a2.emOrdem(a2.getRaiz()));
-
-
         
         // ------------- Arvore no java ----
         TreeSet<String> ts = new TreeSet<String>();
@@ -75,12 +73,10 @@ public class Main {
         System.out.println("Primeiro " + ts.first());
         System.out.println("Ultimo   " + ts.last());
         
-        
         ts.remove("C");
  
         // impirmir
         System.out.println("\n\nTreeSet - Java");
-        System.out.println(ts);
-        */
+        System.out.println(ts);*/
     }
 }

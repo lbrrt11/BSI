@@ -23,7 +23,7 @@ Create table Editora(
 );
 
 create table Livros(
-	IBSN int not null auto_increment,
+    IBSN int not null auto_increment,
     Edicao int,
     Custo float,
     Titulo varchar(45) not null,

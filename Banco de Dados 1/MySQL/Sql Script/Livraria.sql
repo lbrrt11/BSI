@@ -108,4 +108,4 @@ insert into Autores (Email, Nome) values
 ('autorg@email.com', 'Autor G'),
 ('autorh@email.com', 'Autor H'),
 ('autori@email.com', 'Autor I'),
-('autorj0@email.com', 'Autor J');
+('autorj@email.com', 'Autor J');

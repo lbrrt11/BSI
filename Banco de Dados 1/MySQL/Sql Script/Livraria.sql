@@ -6,9 +6,9 @@ Use Livraria;
 Create table Cliente(
     Codigo int not null auto_increment,
     Nome varchar(45) not null,
-    Rua varchar(45),
-    Cep int,
-    Bairro varchar(45),
+    Rua varchar(45) not null,
+    Cep int not null,
+    Bairro varchar(45) not null,
     RG int not null,
     Email varchar(100) not null,
     
@@ -16,16 +16,16 @@ Create table Cliente(
 );
 
 Create table Editora(
-    Codigo int auto_increment,
-    Nome varchar(45),
+    Codigo int not null auto_increment,
+    Nome varchar(45) not null,
     
     primary key(Codigo)
 );
 
 create table Livros(
     IBSN int not null auto_increment,
-    Edicao int,
-    Custo float,
+    Edicao int not null,
+    Custo float not null,
     Titulo varchar(45) not null,
     Editora_Codigo int not null,
     
@@ -34,7 +34,7 @@ create table Livros(
 );
 
 Create table Exemplares(
-    Codigo int auto_increment,
+    Codigo int not null auto_increment,
     DataAquisicao date,
     Livros_IBSN int not null,
     
@@ -43,11 +43,29 @@ Create table Exemplares(
 );
 
 Create table Autores(
-    Codigo int auto_increment,
+    Codigo int not null auto_increment,
     Email varchar(100) not null,
-    Nome varchar(45),
+    Nome varchar(45) not null,
     
     primary key(Codigo)
+);
+
+Create table Emprestimo(
+	Data date,
+	Exemplares_Codigo int not null auto_increment,
+    Cliente_Codigo int not null auto_increment,
+    
+    primary key(Data),
+    foreign key (Exemplares_Codigo) references Exemplares(Codigo),
+    foreign key (Cliente_Codigo) references Cliente(Codigo)
+);
+
+Create table Autoria(
+	Livros_ISBN int not null auto_increment,
+    Autores_Codigo int not null auto_increment,
+    
+    foreign key (Livros_ISBN) references Livros(ISBN),
+    foreign key (Autores_Codigo) references Autores(Codigo)
 );
 
 insert into Cliente (Nome, Rua, Cep, Bairro, RG, Email) values
@@ -74,29 +92,29 @@ insert into Editora (Nome, Codigo) values
 ('Editora I', '9'),
 ('Editora J', '10');
 
-insert into Livros (Edicao, Custo, Titulo, Editora_Codigo) values
-(2, 34.99, 'Livro 1', 1),
-(3, 39.99, 'Livro 2', 2),
-(1, 19.99, 'Livro 3', 3),
-(4, 54.99, 'Livro 4', 4),
-(1, 49.99, 'Livro 5', 5),
-(3, 34.99, 'Livro 6', 6),
-(4, 44.99, 'Livro 7', 7),
-(1, 29.99, 'Livro 8', 8),
-(5, 64.99, 'Livro 9', 9),
-(2, 49.99, 'Livro 10', 10);
+insert into Livros (ISBN, Edicao, Custo, Titulo, Editora_Codigo) values
+(1, 2, 34.99, 'Livro 1', 1),
+(2, 3, 39.99, 'Livro 2', 2),
+(3, 1, 19.99, 'Livro 3', 3),
+(4, 4, 54.99, 'Livro 4', 4),
+(5, 1, 49.99, 'Livro 5', 5),
+(6, 3, 34.99, 'Livro 6', 6),
+(7, 4, 44.99, 'Livro 7', 7),
+(8, 1, 29.99, 'Livro 8', 8),
+(9, 5, 64.99, 'Livro 9', 9),
+(10, 2, 49.99, 'Livro 10', 10);
 
 insert into Exemplares (DataAquisicao, Livros_IBSN) values
-('2023-03-20', 1),
-('2023-03-20', 2),
-('2023-04-11', 3),
-('2023-04-05', 4),
-('2023-05-19', 5),
-('2023-06-02', 6),
-('2023-07-28', 7),
-('2023-08-12', 8),
-('2023-09-30', 9),
-('2023-10-30', 10);
+('2023-03-20', 10),
+('2023-03-20', 9),
+('2023-04-11', 8),
+('2023-04-05', 7),
+('2023-05-19', 6),
+('2023-06-02', 5),
+('2023-07-28', 4),
+('2023-08-12', 3),
+('2023-09-30', 2),
+('2023-10-30', 1);
 
 insert into Autores (Email, Nome) values
 ('autora@email.com', 'Autor A'),
@@ -109,3 +127,27 @@ insert into Autores (Email, Nome) values
 ('autorh@email.com', 'Autor H'),
 ('autori@email.com', 'Autor I'),
 ('autorj@email.com', 'Autor J');
+
+insert into Emprestimo(Data, Exemplares_Codigo, Clientes_Codigo) values
+('2023-03-02', 1, 10),
+('2023-03-29', 2, 9),
+('2023-04-18', 3, 8),
+('2023-05-06', 4, 7),
+('2023-05-11', 5, 6),
+('2023-06-21', 6, 5),
+('2023-07-01', 7, 4),
+('2023-08-30', 8, 3),
+('2023-09-27', 9, 2),
+('2023-10-16', 10, 1);
+
+insert into Autoria(Livros_ISBN, Autores_Codigo) values
+(10, 1),
+(9, 2),
+(8, 3),
+(7, 4),
+(6, 5),
+(5, 6),
+(4, 7),
+(3, 8),
+(2, 9),
+(1, 10);

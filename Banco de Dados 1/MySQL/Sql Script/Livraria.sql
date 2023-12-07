@@ -25,7 +25,7 @@ Create table Editora(
 create table Livros(
     ISBN int not null auto_increment,
     Edicao int not null,
-    Custo float not null,
+    Custo double not null,
     Titulo varchar(45) not null,
     Editora_Codigo int not null,
     

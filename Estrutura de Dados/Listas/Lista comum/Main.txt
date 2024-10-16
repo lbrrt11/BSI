@@ -227,3 +227,5 @@ public class Lista {
         System.out.println(listaAluno.size());
         
         System.out.println(pegado);
+}
+}

@@ -1,0 +1,99 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);
+    background-image: url("https://images.squarespace-cdn.com/content/v1/5fe4caeadae61a2f19719512/f684e7f8-d10c-4d32-8515-1fe140779b4a/Chrollo+Lucilfer%27s+Dark+Majesty?format=2500w");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+nav {
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 10px 0;
+    position: relative;
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: #f4f4f9;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #ff8c00;
+}
+
+.container {
+    text-align: center;
+}
+
+h1 {
+    font-size: 2.5rem;
+    color: #ffffff;
+    margin-bottom: 1rem;
+    margin-top: 2.7rem;
+}
+
+h2 {
+    font-size: 1.2rem;
+    color: #ffffff;
+    margin-bottom: 2rem;
+}
+
+p {
+    font-size: 1.2rem;
+    color: #ffffff;
+    line-height: 1.6;
+    margin: 0 15%;
+}
+
+.menu-toggle {
+    display: none;
+    font-size: 2rem;
+    color: #f4f4f9;
+    cursor: pointer;
+    padding: 10px;
+}
+
+@media (max-width: 690px) {
+    .menu-toggle {
+        display: block;
+    }
+
+    nav ul {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.7);
+        text-align: center;
+    }
+
+    .menu.active {
+        display: flex;
+    }
+
+    nav ul li {
+        margin: 15px 0;
+    }
+}

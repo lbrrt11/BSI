@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="PT-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/711/711769.png" type="image/png">
+    <link rel="stylesheet" href="css/cadastro.css">
+    <script src="script.js"></script>
+    <title>Cadastro</title>
+</head>
+
+<body>
+    <div class="container">
+        <form id="form-signup" form action="cadastro.html" method="get">
+            <h1>Cadastro</h1>
+            
+            <div>
+                <label for="username">Nome de Usuário:</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            
+            <div>
+                <label for="password">Senha:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            
+            <div>
+                <label for="confirm-password">Confirmar senha:</label>
+                <input type="password" id="confirm-password" name="confirm-password" required>
+            </div>
+            
+            <div class="button-container">
+            <input type="submit" value="Concluir">
+            <a href="home.html" class="button">Retornar</a>
+        </div>
+        </form>
+    </div>
+
+    <script src="js/cadastro.js"></script>
+</body>
+</html>

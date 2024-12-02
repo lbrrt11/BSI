@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciador de Clientes</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <button class="nav-btn active">Clientes</button>
+            <button class="nav-btn">Compras</button>
+            <button class="nav-btn">Produtos</button>
+        </nav>
+    </header>
+
+    <main>
+        <button id="new-client-btn">Novo cliente</button>
+        <div id="clients-container" class="empty">
+            <p>Nenhum cliente cadastrado ainda.</p>
+        </div>
+    </main>
+
+    <div id="modal" class="modal hidden">
+        <div class="modal-content">
+            <h2>Novo cliente</h2>
+            <form id="client-form">
+                <input type="text" id="name" placeholder="Nome completo" required>
+                <input type="email" id="email" placeholder="Email" required>
+                <input type="date" id="birthdate" required>
+                <button type="submit">Salvar</button>
+                <button type="button" id="cancel-btn">Cancelar</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

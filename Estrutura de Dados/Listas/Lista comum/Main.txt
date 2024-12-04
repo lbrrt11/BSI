@@ -229,3 +229,129 @@ public class Lista {
         System.out.println(pegado);
 }
 }
+
+        // ---------------------- Main 2 ----------------------
+
+package aluno;
+import java.util.ArrayList;
+import java.util.Arrays;
+public class Vetor{
+    
+    // Declarando e Inicializando um array de Aluno com capacidade 100.
+    private Object[] objetos = new Object[100];
+    private int totalDeObjetos = 0;
+    
+    public void adiciona(Object objetos){
+        //Compactado a Esquerda
+        this.objetos[this.totalDeObjetos] = objetos;
+        this.totalDeObjetos++;
+    }
+    
+    public void adiciona(int posicao, Object objetos){
+        garantaEspaco();
+        if (!this.posicaoValida(posicao)) {throw new IllegalArgumentException("Posição inválida");}
+        
+        for (int i = this.totalDeObjetos - 1; i >= posicao; i--){
+            this.objetos[i + 1] = this.objetos[i];
+        }
+
+        this.objetos[posicao] = objetos;
+        this.totalDeObjetos++;
+        }
+        private boolean posicaoValida(int posicao){
+            return posicao >= 0 && posicao <= this.totalDeObjetos;
+        }
+    
+    public Object pega(int posicao) {
+        if (!this.posicaoOcupada(posicao)) {
+            throw new IllegalArgumentException("Posição Inválida");
+        }
+        return this.objetos[posicao];
+    }
+    
+    private boolean posicaoOcupada(int posicao){
+        return posicao >= 0 && posicao < this.totalDeObjetos;
+    }
+    
+    public void remove (int posicao){
+        if (!this.posicaoOcupada(posicao)){
+            throw new IllegalArgumentException("Posicao inválida");
+        }
+        for (int i = posicao; i < this.totalDeObjetos - 1; i++) {
+            this.objetos[i] = this.objetos[i+1];
+        }
+        this.totalDeObjetos--;
+    }
+    
+    public boolean contem(Object objetos){
+        for (int i = 0; i < this.totalDeObjetos; i++) {
+    if (objetos.equals(this.objetos [i])) {
+    return true;
+    }
+        }
+        return false;
+    }
+    
+    public int tamanho (){
+        return this.totalDeObjetos;
+    }
+    
+    public String toString(){
+        if (this.totalDeObjetos == 0) {
+            return "[]";
+        }
+    
+    StringBuilder builder = new StringBuilder();
+    builder.append("[");
+    
+    for (int i = 0; i<this.totalDeObjetos - 1; i++) {
+        builder.append(this.objetos[i]);
+        builder.append(", ");
+    }
+    
+    builder.append(this.objetos[this.totalDeObjetos - 1]);
+    builder.append("]");
+    
+    return builder.toString();
+    }
+    
+    private void garantaEspaco() {
+        if (this.totalDeObjetos == this.objetos.length) {
+            Object[] novaArray = new Object[this.objetos.length * 2];
+            for (int i = 0; i < this.objetos.length; i++) {
+                novaArray [i] = this.objetos[i];
+            }
+            this.objetos = novaArray;
+        }
+    }
+    
+    public static void main(String[] args) {
+        Object a1 = new Object("Aluno 1", 22, 8, "V Semestre");
+        Object a2 = new Object("Aluno 2");
+        Object a3 = new Object("Aluno 3");
+        Object a4 = new Object("Aluno 4", 25, 9, "VII Semestre");
+        Object a5 = new Object("Aluno 5");
+        
+        Vetor lista = new Vetor();
+        
+        lista.adiciona(a1);
+        lista.adiciona(a2);
+        System.out.println(lista);
+        System.out.println(lista.objetos.length);
+        
+        Object x = lista.pega(0);
+        System.out.println(x.getNome());
+        
+        lista.adiciona(0, a4);
+        lista.adiciona(1, a3);
+        System.out.println(lista);
+        System.out.println(lista.objetos.length);
+        
+        lista.adiciona(a5);
+        System.out.println(lista);
+        System.out.println(lista.objetos.length);
+        
+        lista.remove(0);
+        System.out.println();
+    }
+}

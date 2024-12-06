@@ -41,3 +41,100 @@
     <script src="js/script.js"></script>
 </body>
 </html>
+
+/*
+'use client';
+
+import React, { useState } from "react";
+import "./globals.css";
+
+export default function Inicio() {
+  
+  const [modalVisivel, setModalVisivel] = useState(false);
+  const [clientes, setClientes] = useState<any[]>([]);
+
+  const salvarFormulario = (evento: React.FormEvent) => {
+    evento.preventDefault();
+
+    const nome = (evento.target as any).nome.value;
+    const email = (evento.target as any).email.value;
+    const nascimento = (evento.target as any).nascimento.value;
+
+    const novoCliente = { nome, email, nascimento };
+    setClientes((prevClientes) => [...prevClientes, novoCliente]);
+
+    setModalVisivel(false);
+    (evento.target as any).reset();
+  };
+
+  return (
+    <>
+      <header>
+        <nav>
+          <button className="botao-nav ativo">Clientes</button>
+          <button className="botao-nav">Compras</button>
+          <button className="botao-nav">Produtos</button>
+        </nav>
+      </header>
+
+      <main>
+        <button onClick={() => setModalVisivel(true)}>Novo Cliente</button>
+
+        <div
+          id="container-clientes"
+          className={clientes.length === 0 ? "vazio" : ""}
+        >
+          {clientes.length === 0 ? (
+            <p>Nenhum cliente cadastrado ainda.</p>
+          ) : (
+            clientes.map((cliente, index) => (
+              <div key={index} className="cartao-cliente">
+                <h3>{cliente.nome}</h3>
+                <p>{cliente.email}</p>
+                <p>{cliente.nascimento}</p>
+                <button>Editar</button>
+                <button>Inativar</button>
+              </div>
+            ))
+          )}
+        </div>
+      </main>
+
+      {modalVisivel && (
+        <div className="modal">
+          <div className="conteudo-modal">
+            <h2>Adicionar Novo Cliente</h2>
+            <form onSubmit={salvarFormulario}>
+              <input
+                type="text"
+                name="nome"
+                placeholder="Nome completo"
+                required
+              />
+              <input
+                type="email"
+                name="email"
+                placeholder="E-mail"
+                required
+              />
+              <input
+                type="date"
+                name="nascimento"
+                required
+              />
+              <div>
+                <button type="submit">Salvar</button>
+                <button
+                  type="button"
+                  onClick={() => setModalVisivel(false)}
+                >
+                  Cancelar
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
+    </>
+  );
+} */

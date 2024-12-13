@@ -1,0 +1,256 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+header {
+  background-color: #f3f3f3;
+  padding: 18px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.botao-nav {
+  border: none;
+  background: #9b30ff;
+  padding: 10px 20px;
+  border-radius: 15px;
+  cursor: pointer;
+  color: white;
+  margin-left: 12px;
+}
+
+.botao-nav.ativo {
+  background: #6f1d9b;
+}
+
+.botao-nav:hover:not(.ativo) {
+  background: #ab47bc;
+}
+
+main {
+  flex: 1;
+  padding: 20px;
+}
+
+.vazio {
+  text-align: center;
+  font-size: 16px;
+  color: #888;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  min-height: 200px;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:focus {
+  outline: none;
+}
+
+button {
+  border: none;
+  background: #9b30ff;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 15px;
+  margin-bottom: 20px;
+}
+
+button:hover {
+  background: #6f1d9b;
+}
+
+#container-clientes.vazio {
+  text-align: center;
+  font-size: 16px;
+  color: #888;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  min-height: 200px;
+}
+
+#container-clientes {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  margin-top: 20px;
+}
+
+.cartao-cliente {
+  border: 1px solid #ccc;
+  border-radius: 15px;
+  padding: 15px;
+  background: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 90%;
+}
+
+.cartao-cliente h3 {
+  margin: 0;
+  font-size: 18px;
+  color: #333;
+}
+
+.cartao-cliente p {
+  margin: 5px 0;
+  font-size: 14px;
+  color: #666;
+}
+
+.cartao-cliente button {
+  margin-top: 10px;
+  padding: 5px 10px;
+  border: none;
+  background: #9b30ff;
+  color: white;
+  border-radius: 5px;
+}
+
+.cartao-cliente button:hover {
+  background: #6f1d9b;
+}
+
+.cartao-cliente.inativo {
+  background: #ccc;
+  color: #666;
+}
+
+.cartao-cliente.inativo button {
+  background: #999;
+  cursor: not-allowed;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal .conteudo-modal {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal .conteudo-modal input {
+  margin-bottom: 15px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 15px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.modal .conteudo-modal input[type="date"] {
+  width: 100%;
+}
+
+.modal .conteudo-modal button {
+  padding: 10px;
+  border: none;
+  background: #9b30ff;
+  color: white;
+  border-radius: 15px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.modal .conteudo-modal button:first-child {
+  margin-right: 10px;
+}
+
+.modal .conteudo-modal button:hover {
+  background: #ab47bc;
+}
+
+#container-produtos {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  margin-top: 20px;
+}
+
+.cartao-produto {
+  border: 1px solid #ccc;
+  border-radius: 15px;
+  padding: 15px;
+  background: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 90%;
+}
+
+.cartao-produto h3 {
+  margin: 0;
+  font-size: 18px;
+  color: #333;
+}
+
+.cartao-produto p {
+  margin: 5px 0;
+  font-size: 14px;
+  color: #666;
+}
+
+.cartao-produto button {
+  margin-top: 10px;
+  padding: 5px 10px;
+  border: none;
+  background: #9b30ff;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.cartao-produto button:hover {
+  background: #6f1d9b;
+}
+
+.cartao-produto.inativo {
+  background: #ccc;
+  color: #666;
+}
+
+.cartao-produto.inativo button {
+  background: #999;
+  cursor: not-allowed;
+}
+
+#container-produtos.vazio {
+  text-align: center;
+  font-size: 16px;
+  color: #888;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  min-height: 200px;
+}
